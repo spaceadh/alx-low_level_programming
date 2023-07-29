@@ -1,24 +1,26 @@
-#include "lists.h"
 #include <stdlib.h>
+#include "lists.h"
 #include <stdio.h>
-#include <stddef.h>
-/**
- * print_list - prints a list
- * @h: head of list
- * Return: number of elements
- */
+
+
 size_t print_list(const list_t *h)
 {
-	int count = 0;
+    size_t count = 0;
+    const list_t *ptr = h;
 
-	while (h != NULL)
-	{
-		if (h->str == NULL)
-			printf("[0] (nil)\n");
-		else
-			printf("[%d] %s\n", h->len, h->str);
-		h = h->next;
-		count++;
-	}
-	return (count);
+    while (ptr != NULL)
+    {
+        if (ptr->str == NULL)
+        {
+            printf("[0] (nil)\n");
+        }
+        else
+        {
+            printf("[%u] %s\n", ptr->len, ptr->str);
+        }
+        ptr = ptr->next;
+        count++;
+    }
+
+    return count;
 }

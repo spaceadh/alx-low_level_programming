@@ -1,21 +1,23 @@
-section .data
-    hello db "Hello, Holberton", 0
-    fmt db "%s", 10, 0
+SECTION .data
+msg:	db "Hello, Holberton", 0
+fmt:	db "%s", 10, 0
 
-section .text
-    extern printf
+        SECTION .text
+	    extern printf
+    	global main
 
 global _start
 
-_start:
+main:
     ; Move the address of hello to rsi
-    mov rsi, hello
-    ; Move the address of fmt to rdi
-    mov rdi, fmt
+	mov esi, msg
+
+	mov edi, fmt
+	mov eax, 0
+
     ; Call printf
-    call printf
+	call printf
 
     ; Exit the program
-    mov rax, 60        ; syscall number for exit
-    xor rdi, rdi      ; exit status 0
-    syscall
+	mov eax, 0
+	ret
